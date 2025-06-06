@@ -6,6 +6,12 @@ This repository contains the firmware for the Johnny 5 Hackers Teaching Hackers 
 ## Hardware
 *   **Microcontroller:** STM32L031G6U6 (STMicroelectronics)
 
+## Requirements
+* **Computer**
+* **Serial Adapter** - A couple of cheap options below if you need an adapter. 
+   * [FTDI Mini USB to TTL Serial](https://www.amazon.com/dp/B0BJKCSZZW/ref=sspa_dk_detail_3?psc=1&pd_rd_i=B0BJKCSZZW&pd_rd_w=AV0kN&content-id=amzn1.sym.386c274b-4bfe-4421-9052-a1a56db557ab&pf_rd_p=386c274b-4bfe-4421-9052-a1a56db557ab&pf_rd_r=84Z1W4C40M4A6NSX5FX2&pd_rd_wg=UWfZD&pd_rd_r=12a104aa-b3f7-4fbb-ac85-d786d62af009&s=pc&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM)
+   * [HiLetgo CP2102 module](https://www.amazon.com/HiLetgo-CP2102-Converter-Adapter-Downloader/dp/B00LODGRV8)
+
 ## Getting Started
 1.  **Power:** Insert CR2450 Battery or supply external power (3V) to the VDD pin
 2.  **Serial Connection:**
