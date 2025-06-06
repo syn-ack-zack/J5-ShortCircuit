@@ -1,7 +1,9 @@
 # Johnny 5 - 2025 HTH Badge
 
 ## Overview
-This repository contains the firmware for the Johnny 5 Hackers Teaching Hackers (HTH) interactive electronic badge. The badge features a series of challenges that users can solve by interacting with its shell interface. Completing all challenges "repairs" Johnny 5 and unlocks its full functionality.
+This repository contains the firmware for the Johnny 5 Hackers Teaching Hackers (HTH) interactive electronic badge. The badge features a series of challenges that users can solve by interacting with its shell interface. Completing all challenges "repairs" Johnny 5 and unlock more effects.
+
+<img src="https://github.com/user-attachments/assets/caf9e08d-c5c1-4d53-b7e1-8e73df0abf4a" width="300"/>
 
 ## Hardware
 *   **Microcontroller:** STM32L031G6U6 (STMicroelectronics)
