@@ -167,16 +167,6 @@ bool is_capacitive_touched(void) {
     while (HAL_GPIO_ReadPin(CAP_PAD_PORT, CAP_PAD_PIN) == GPIO_PIN_SET && count < 10000) {
         count++;
     }
-    // If count is low, it discharged quickly (no touch or less capacitance)
-    // If count is high, it discharged slowly (touch added capacitance)
-    // Original logic: return (count < 2000); This means touch = quick discharge.
-    // This is counter-intuitive for typical cap touch where touch INCREASES capacitance and slows discharge.
-    // Let's assume the original logic was calibrated for its specific setup.
-    // If touch ADDS capacitance, pin stays HIGH for LONGER. So count would be HIGHER.
-    // Threshold: if count > threshold_when_touched -> touched.
-    // Original: count < 2000 means touched. This implies touch makes it discharge FASTER.
-    // This could happen if the touch point grounds the pin more effectively through the body.
-    // Sticking to original logic:
     return (count < 2000);
 }
 
