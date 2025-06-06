@@ -7,7 +7,7 @@ This repository contains the firmware for the Johnny 5 Hackers Teaching Hackers 
 *   **Microcontroller:** STM32L031G6U6 (STMicroelectronics)
 
 ## Getting Started
-1.  **Power:** Connect the badge to a power source (e.g., USB).
+1.  **Power:** Insert CR2450 Battery or supply external power (3V) to the VDD pin
 2.  **Serial Connection:**
     *   **Primary Shell (LPUART1):**
         *   Connect to pins PA2 (Badge TX) and PA3 (Badge RX).
