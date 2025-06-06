@@ -41,23 +41,6 @@ LED_Pin_t LIGHT_PINS[LIGHT_PIN_COUNT] = {
 const uint8_t custom_marquee_sequence[LIGHT_PIN_COUNT] = {4, 3, 2, 1, 0, 6, 5, 7}; // Matches original
 #define CUSTOM_MARQUEE_SEQUENCE_LENGTH (sizeof(custom_marquee_sequence)/sizeof(custom_marquee_sequence[0]))
 
-
-// Software PWM related variables needed by driveLED if it directly manipulates them
-// These are defined in sw_pwm.c and should be accessed via a function if possible,
-// but original driveLED modified sw_pwm_duty_cycles directly.
-// For now, assume sw_pwm.h provides extern declaration if needed, or sw_pwm.c provides a setter.
-// Based on sw_pwm.h, these are static in sw_pwm.c.
-// driveLED will need to call a setter in sw_pwm.c or sw_pwm_duty_cycles needs to be extern.
-// For now, I'll assume sw_pwm.c will expose sw_pwm_duty_cycles or a setter.
-// Let's assume sw_pwm.h will declare `extern volatile uint8_t sw_pwm_duty_cycles[NUM_SW_PWM_CHANNELS];`
-// and sw_pwm.c will define it.
-// Re-checking sw_pwm.h: it comments out extern declarations.
-// This means driveLED needs to be refactored or sw_pwm needs to expose setters.
-// For now, I will assume `sw_pwm_duty_cycles` is made extern in `sw_pwm.h` and defined in `sw_pwm.c`.
-// Note: sw_pwm_pin_indices and sw_pwm_duty_cycles are now accessed via functions
-// from sw_pwm.c
-
-
 void driveLED(uint8_t led_idx, uint8_t val) {
     if (led_idx >= LIGHT_PIN_COUNT) return;
 
@@ -527,23 +510,8 @@ void update_led_visuals(uint32_t now) {
     }
 }
 
-
-// Placeholder for functions to change effect, called by shell or touch
-// These will interact with global `effect` and `repair_status` (for saving)
-// And potentially re-initialize effect-specific static variables.
-// Actual implementation will need access to `repair_status` and `save_repair_status` from challenge module.
-// For now, just prototypes.
 void cycle_effect(void) {
-    // This logic will be moved from main.c's touch handling section
-    // Needs access to: effect, clearAllLEDs, AppEffect_t enum,
-    // repair_status, save_repair_status (from challenge module),
-    // strike effect re-init variables (burstActive, strike_phase, etc.)
-    // eye pulse re-init variables (eye_pulse_sub_phase, etc.)
 }
 
 void set_effect(AppEffect_t new_effect) {
-    // This logic will be moved from main.c's "bling" command
-    // Needs access to: effect, clearAllLEDs, AppEffect_t enum,
-    // repair_status, save_repair_status (from challenge module),
-    // strike effect re-init variables, eye pulse re-init variables.
 }
