@@ -10,12 +10,12 @@ This repository contains the firmware for the Johnny 5 Hackers Teaching Hackers 
 1.  **Power:** Insert CR2450 Battery or supply external power (3V) to the VDD pin
 2.  **Serial Connection:**
     *   **Primary Shell (LPUART1):**
-        *   Connect to pins PA2 (Badge TX) and PA3 (Badge RX).
+        *   Connect to pins PA2 (Badge TX) and PA3 (Badge RX) and GND to Badge GND
         *   Use a serial terminal program (e.g., PuTTY, minicom, VSCode Serial Monitor).
         *   Baud Rate: **115200**, 8 data bits, No parity, 1 stop bit (8N1).
         *   This shell provides access to diagnostic commands and challenge interactions.
     *   **Auxiliary Diagnostic Stream (USART2):**
-        *   Connect to pins PA9 (Badge TX) and PA10 (Badge RX).
+        *   Connect to pins PA9 (Badge TX) and PA10 (Badge RX) and GND to Badge GND.
         *   Baud Rate: **9600**, 8 data bits, No parity, 1 stop bit (8N1).
         *   This port is used for a diagnostic data stream during Challenge 2 (Power Core).
 
@@ -38,7 +38,7 @@ Upon connecting, you'll be greeted by the S.A.I.N.T. OS shell. Key commands incl
 ## Challenge Walkthrough
 
 ### Initial State
-When first powered on or after a `j5_system_restore`, Johnny 5 is in a "damaged" state. The eye LED will likely be showing the `EFFECT_STRIKE` pattern. You need to repair three modules: `comms`, `power_core`, and `personality_matrix`.
+When first powered on or after a `j5_system_restore`, Johnny 5 is in a "damaged" state. The LEDs will likely be showing the `EFFECT_STRIKE` pattern. You need to repair three modules: `comms`, `power_core`, and `personality_matrix`.
 
 ### Challenge 1: Comms Module Repair
 1.  **Scan the Comms Module:**
@@ -64,7 +64,7 @@ When first powered on or after a `j5_system_restore`, Johnny 5 is in a "damaged"
     *   You will see a stream of `DIAGNOSTIC_MESSAGES`. Hidden within these messages are characters that form the stabilization key.
     *   The key characters are revealed in messages like `[MEMORY] SEG 0xXX = 0x000000YY`, where `YY` is the ASCII hex code.
     *   The characters are: 'S', 'L', 'I', 'E', 'P', 'S', 'L', 'R', 'A'.
-    *   Collect these characters. The required code is `LASERLIPS`. (The user may need to rearrange these or identify them from the stream).
+    *   Collect these characters and unscramble them. The required code is `LASERLIPS`.
 3.  **Fix the Power Core Module:**
     *   Return to the primary shell (LPUART1).
     *   Type: `diag fix power_core LASERLIPS`
@@ -106,6 +106,7 @@ Once all three modules are repaired:
 *   You can also cycle bling effects by touching Johnny 5's hand that is reaching upwards. Effect state will be saved to memory and persist on reboot. 
 *   The final flag is `HTH{I_W4NT_T0_L1V3!!}`.
 
+<img src="https://github.com/user-attachments/assets/a510278d-0a36-45aa-b855-5f36621e8c3b" width="300"/>
 
 ### Secret Unlock Phrase (Optional)
 There's a secret phrase: `0x0F1V34L1V3`
